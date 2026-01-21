@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lumiera AI | Professional Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --smooth-curve: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #e3e3e3; /* Updated primary text color */
+            margin: 0;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Custom scrollbar for an obsidian theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d0d0e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #282829;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a3a3b;
+        }
+
+        /* Smooth overall transitions */
+        * {
+            transition-timing-function: var(--smooth-curve) !important;
+        }
+        
+        @keyframes fan-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-fan {
+            animation: fan-rotate 4s linear infinite;
+        }
+        .animate-fan-fast {
+            animation: fan-rotate 0.8s linear infinite;
+        }
+
+        .gpu-text-transition {
+            transition: color 2.5s var(--smooth-curve);
+        }
+
+        /* ChatGPT-style message container */
+        .chat-container {
+            max-width: 52rem;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Markdown Styling - Dark Mode Professional */
+        .prose {
+            color: #9ca3af !important; /* Secondary text color for markdown paragraphs */
+            max-width: none !important;
+            font-size: 1rem; /* Base font size */
+            line-height: 1.75; /* Improved readability */
+        }
+        .prose p {
+            margin-top: 0.75em;
+            margin-bottom: 0.75em;
+        }
+        .prose strong {
+            color: #e3e3e3 !important; /* Primary text color for strong elements */
+            font-weight: 600;
+        }
+        .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+            color: #e3e3e3 !important; /* Primary text color for headings */
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+        .prose h1 { font-size: 2.25em; }
+        .prose h2 { font-size: 1.75em; }
+        .prose h3 { font-size: 1.5em; }
+        .prose h4 { font-size: 1.25em; }
+
+        .prose a {
+            color: #6366f1 !important; /* Indigo color for links */
+            text-decoration: none;
+        }
+        .prose a:hover {
+            text-decoration: underline;
+        }
+
+        .prose ol, .prose ul {
+            padding-left: 1.5rem;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+        .prose li {
+            margin-bottom: 0.5em;
+        }
+
+        .prose pre {
+            background-color: #0d0d0e !important; /* Elevated surface color */
+            border: 1px solid #282829; /* Thin border */
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            position: relative; /* For copy button */
+        }
+        .prose code {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #1a1a1b;
+            color: #e3e3e3; /* Primary text color */
+            padding: 0.2em 0.4em;
+            border-radius: 0.35rem;
+            font-size: 0.85em;
+        }
+        .prose pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .prose blockquote {
+            border-left: 4px solid #6366f1; /* Indigo for blockquotes */
+            padding-left: 1rem;
+            color: #9ca3af; /* Secondary text color */
+            font-style: italic;
+            margin: 1.5rem 0;
+        }
+        .prose table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        .prose th, .prose td {
+            border: 1px solid #282829; /* Thin border */
+            padding: 0.75rem;
+            text-align: left;
+        }
+        .prose th {
+            background-color: #1a1a1b;
+            font-weight: 600;
+            color: #e3e3e3; /* Primary text color */
+        }
+        .prose hr {
+            border: none;
+            border-top: 1px solid #282829; /* Thin border */
+            margin: 3rem 0;
+        }
+
+
+        /* Smoother fade-in utility */
+        .animate-soft-in {
+            animation: softIn 0.8s var(--smooth-curve) forwards;
+        }
+
+        @keyframes softIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+
+        /* Smooth Text Loader Shimmer */
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .shimmer-text {
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.03) 25%,
+                rgba(255, 255, 255, 0.08) 50%,
+                rgba(255, 255, 255, 0.03) 75%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+            border-radius: 4px;
+        }
+
+        .loading-line {
+            height: 14px;
+            margin-bottom: 12px;
+            width: 100%;
+        }
+
+        .loading-line:last-child {
+            width: 60%;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-markdown": "https://esm.sh/react-markdown@^9.0.1",
+    "remark-gfm": "https://esm.sh/remark-gfm@^4.0.0"
+  }
+}
+</script>
+</head>
+<body class="bg-[#000000] font-sans antialiased text-[#e3e3e3]">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

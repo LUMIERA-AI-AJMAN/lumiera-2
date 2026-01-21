@@ -1,0 +1,7 @@
+{
+  "name": "lumiera AI",
+  "description": "A professional, general-purpose artificial intelligence designed for clarity, accuracy, and reliability.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
